@@ -636,6 +636,15 @@ namespace eac3toGUI
             backgroundWorker.RunWorkerAsync(args);
         }
 
+        bool ContainsWrapped(string text, string search)
+        {
+            return text.Contains($"'{search}'")
+                   || text.Contains($"\"{search}\"")
+                   || text.Contains($"({search})")
+                   || text.Contains($"[{search}]")
+                   || text.Contains($"{{{search}}}");
+        }
+
         string GenerateFilename(string baseName, Stream stream, DataGridViewRow row, int count)
         {
             var ext = $".{row.Cells["StreamExtractAsComboBox"].Value.ToString().ToLowerInvariant()}";
@@ -653,18 +662,19 @@ namespace eac3toGUI
 
             if (stream is SubtitleStream subtitleStream)
             {
-                if (subtitleStream.Name.IndexOf("commentary", StringComparison.InvariantCultureIgnoreCase) >= 0)
+                var upperName = subtitleStream.Name.ToUpperInvariant();
+
+                if (upperName.Contains("COMMENTARY"))
                 {
                     postTag += ".commentary";
                 }
 
-                if (subtitleStream.IsForced)
+                if (subtitleStream.IsForced || upperName == "FORCED" || ContainsWrapped(upperName, "FORCED"))
                 {
                     postTag += ".forced";
                 }
 
-                var upperName = subtitleStream.Name.ToUpperInvariant();
-                if (subtitleStream.IsSDH || upperName == "SDH" || upperName.Contains("(SDH)") || upperName.Contains("[SDH]"))
+                if (subtitleStream.IsSDH || upperName == "SDH" || ContainsWrapped(upperName, "SDH"))
                 {
                     postTag += ".SDH";
                 }

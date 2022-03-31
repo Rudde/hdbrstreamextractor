@@ -31,6 +31,7 @@ namespace eac3toGUI
         static void Main()
         {
             Application.EnableVisualStyles();
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.SetCompatibleTextRenderingDefault(false);
 
             string eac3toPath = System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "eac3to.exe");
