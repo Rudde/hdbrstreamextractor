@@ -37,6 +37,9 @@ namespace eac3to
             {
                 switch (VideoType)
                 {
+                    case VideoStreamType.HEVC:
+                        return new object[] { "MKV", "HEVC" };
+                    case VideoStreamType.h264:
                     case VideoStreamType.AVC:
                         return new object[] { "MKV", "H264" };
                     case VideoStreamType.VC1:
@@ -72,6 +75,12 @@ namespace eac3to
 
             switch (videoStream.Name.ToUpper())
             {
+                case "H265/HEVC":
+                    videoStream.VideoType = VideoStreamType.HEVC;
+                    break;
+                case "H264/AVC":
+                    videoStream.VideoType = VideoStreamType.h264;
+                    break;
                 case "AVC":
                     videoStream.VideoType = VideoStreamType.AVC;
                     break;

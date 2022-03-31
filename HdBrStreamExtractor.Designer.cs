@@ -76,6 +76,7 @@
             this.StreamExtractAsComboBox = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.StreamAddOptionsTextBox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StreamsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.smartFilenames = new System.Windows.Forms.CheckBox();
             this.StatusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -97,7 +98,7 @@
             // 
             // LogTextBox
             // 
-            this.LogTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.LogTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LogTextBox.Location = new System.Drawing.Point(12, 357);
             this.LogTextBox.Multiline = true;
@@ -289,7 +290,7 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(9, 9);
@@ -323,7 +324,7 @@
             // 
             // InputSourceTextBox
             // 
-            this.InputSourceTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.InputSourceTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.InputSourceTextBox.Location = new System.Drawing.Point(6, 16);
             this.InputSourceTextBox.Name = "InputSourceTextBox";
@@ -344,7 +345,7 @@
             // 
             // FolderOutputTextBox
             // 
-            this.FolderOutputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.FolderOutputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FolderOutputTextBox.Location = new System.Drawing.Point(6, 16);
             this.FolderOutputTextBox.Name = "FolderOutputTextBox";
@@ -353,8 +354,8 @@
             // 
             // splitContainer2
             // 
-            this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer2.Location = new System.Drawing.Point(9, 58);
             this.splitContainer2.Margin = new System.Windows.Forms.Padding(0);
@@ -390,8 +391,8 @@
             this.FeatureDataGridView.AllowUserToDeleteRows = false;
             this.FeatureDataGridView.AllowUserToResizeColumns = false;
             this.FeatureDataGridView.AllowUserToResizeRows = false;
-            this.FeatureDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.FeatureDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FeatureDataGridView.AutoGenerateColumns = false;
             this.FeatureDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
@@ -506,8 +507,8 @@
             this.StreamDataGridView.AllowUserToResizeRows = false;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             this.StreamDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.StreamDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.StreamDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StreamDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.StreamDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
@@ -612,12 +613,25 @@
             this.StreamsBindingSource.AllowNew = false;
             this.StreamsBindingSource.DataSource = typeof(eac3to.Stream);
             // 
+            // smartFilenames
+            // 
+            this.smartFilenames.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.smartFilenames.Checked = true;
+            this.smartFilenames.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.smartFilenames.Location = new System.Drawing.Point(255, 417);
+            this.smartFilenames.Name = "smartFilenames";
+            this.smartFilenames.Size = new System.Drawing.Size(155, 17);
+            this.smartFilenames.TabIndex = 18;
+            this.smartFilenames.Text = "Output with smart filenames";
+            this.smartFilenames.UseVisualStyleBackColor = true;
+            // 
             // HdBrStreamExtractor
             // 
             this.AcceptButton = this.ExtractButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 462);
+            this.Controls.Add(this.smartFilenames);
             this.Controls.Add(this.splitContainer2);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.HelpLinkLabel);
@@ -704,5 +718,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn StreamDescriptionTextBox;
         private System.Windows.Forms.DataGridViewComboBoxColumn StreamExtractAsComboBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn StreamAddOptionsTextBox;
+        private System.Windows.Forms.CheckBox smartFilenames;
     }
 }

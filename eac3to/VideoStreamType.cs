@@ -25,6 +25,10 @@ namespace eac3to
     /// <summary>An enumeration of Video Stream types</summary>
     public enum VideoStreamType
     {
+        [StringValue("HEVC")]
+        HEVC,
+        [StringValue("h264")]
+        h264,
         [StringValue("AVC")]
         AVC,
         [StringValue("VC-1")]

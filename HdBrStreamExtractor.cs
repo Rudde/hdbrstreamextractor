@@ -23,6 +23,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -510,6 +512,8 @@ namespace eac3toGUI
 
                 if (IsLocalDisk(InputSourceTextBox.Text))
                     FolderOutputTextBox.Text = System.IO.Path.GetDirectoryName(InputSourceTextBox.Text);
+
+                AnalyzeFile();
             }
         }
 
@@ -632,6 +636,48 @@ namespace eac3toGUI
             backgroundWorker.RunWorkerAsync(args);
         }
 
+        string GenerateFilename(string baseName, Stream stream, DataGridViewRow row, int count)
+        {
+            var ext = $".{row.Cells["StreamExtractAsComboBox"].Value.ToString().ToLowerInvariant()}";
+
+            var cultures = CultureInfo.GetCultures(CultureTypes.NeutralCultures);
+
+            var cultureInfo = cultures.SingleOrDefault(x => x.EnglishName == stream.Language);
+            if (cultureInfo == null)
+            {
+                cultureInfo = cultures.SingleOrDefault(x => x.EnglishName.Contains(stream.Language));
+            }
+            var langIso = cultureInfo?.ThreeLetterISOLanguageName != null ? $".{cultureInfo.ThreeLetterISOLanguageName}" : string.Empty;
+
+            string postTag = string.Empty;
+
+            if (stream is SubtitleStream subtitleStream)
+            {
+                if (subtitleStream.Name.IndexOf("commentary", StringComparison.InvariantCultureIgnoreCase) >= 0)
+                {
+                    postTag += ".commentary";
+                }
+
+                if (subtitleStream.IsForced)
+                {
+                    postTag += ".forced";
+                }
+
+                var upperName = subtitleStream.Name.ToUpperInvariant();
+                if (subtitleStream.IsSDH || upperName == "SDH" || upperName.Contains("(SDH)") || upperName.Contains("[SDH]"))
+                {
+                    postTag += ".SDH";
+                }
+            }
+
+            if (count > 1)
+            {
+                postTag += $".{count.ToString()}";
+            }
+
+            return $"{baseName}{langIso}{postTag}{ext}";
+        }
+
         string GenerateArguments()
         {
             StringBuilder sb = new StringBuilder();
@@ -644,6 +690,8 @@ namespace eac3toGUI
                 number = feature.Number;
             }
 
+            List<string> fileNames = new List<string>();
+
             foreach (DataGridViewRow row in StreamDataGridView.Rows)
             {
                 Stream stream = row.DataBoundItem as Stream;
@@ -652,11 +700,34 @@ namespace eac3toGUI
                 if (extractStream.Value != null && int.Parse(extractStream.Value.ToString()) == 1)
                 {
                     if (row.Cells["StreamExtractAsComboBox"].Value == null)
-                        throw new ApplicationException(string.Format("Specify an extraction type for stream:\r\n\n\t{0}: {1}", stream.Number, stream.Name));
+                        throw new ApplicationException(
+                            $"Specify an extraction type for stream:\r\n\n\t{stream.Number}: {stream.Name}");
 
-                    sb.Append(string.Format("{0}:\"{1}\" {2} ", stream.Number,
-                        System.IO.Path.Combine(FolderOutputTextBox.Text, string.Format("{0}_{1}_{2}.{3}", number, stream.Number, Extensions.GetStringValue(stream.Type), row.Cells["StreamExtractAsComboBox"].Value).ToLower()),
-                        row.Cells["StreamAddOptionsTextBox"].Value).Trim());
+                    var filename = string.Empty;
+
+                    if (smartFilenames.Checked)
+                    {
+                        var count = 1;
+
+                        do
+                        {
+                            filename = GenerateFilename(feature.Name, stream, row, count);
+
+                            count++;
+                        } while (fileNames.Contains(filename));
+
+                        fileNames.Add(filename);
+                    }
+                    else
+                    {
+                        filename =
+                            $"{number}_{stream.Number}_{Extensions.GetStringValue(stream.Type)}.{row.Cells["StreamExtractAsComboBox"].Value}"
+                                .ToLower();
+                    }
+
+                    sb.Append(
+                        $"{stream.Number}:\"{System.IO.Path.Combine(FolderOutputTextBox.Text, filename)}\" {row.Cells["StreamAddOptionsTextBox"].Value} "
+                            .Trim());
 
                     sb.Append(" ");
                 }
@@ -816,6 +887,28 @@ namespace eac3toGUI
             }
         }
 
+        void AnalyzeFile()
+        {
+            InitBackgroundWorker();
+            eac3toArgs args = new eac3toArgs();
+            features = new List<Feature>();
+            FeatureDataGridView.DataSource = null;
+            StreamDataGridView.DataSource = null;
+
+            args.eac3toPath = eac3toPath;
+            args.inputPath = InputSourceTextBox.Text;
+            args.workingFolder = string.IsNullOrEmpty(FolderOutputTextBox.Text) ? FolderOutputTextBox.Text : System.IO.Path.GetDirectoryName(args.eac3toPath);
+            args.resultState = ResultState.FeatureCompleted;
+            args.args = string.Empty;
+
+            backgroundWorker.ReportProgress(0, "Retrieving features");
+            WriteToLog("Retrieving features");
+            FeatureLinkLabel.Enabled = false;
+            Cursor = Cursors.WaitCursor;
+
+            backgroundWorker.RunWorkerAsync(args);
+        }
+
         void FeatureLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (string.IsNullOrEmpty(InputSourceTextBox.Text))
@@ -824,24 +917,7 @@ namespace eac3toGUI
             }
             else
             {
-                InitBackgroundWorker();
-                eac3toArgs args = new eac3toArgs();
-                features = new List<Feature>();
-                FeatureDataGridView.DataSource = null;
-                StreamDataGridView.DataSource = null;
-
-                args.eac3toPath = eac3toPath;
-                args.inputPath = InputSourceTextBox.Text;
-                args.workingFolder = string.IsNullOrEmpty(FolderOutputTextBox.Text) ? FolderOutputTextBox.Text : System.IO.Path.GetDirectoryName(args.eac3toPath);
-                args.resultState = ResultState.FeatureCompleted;
-                args.args = string.Empty;
-
-                backgroundWorker.ReportProgress(0, "Retrieving features");
-                WriteToLog("Retrieving features");
-                FeatureLinkLabel.Enabled = false;
-                Cursor = Cursors.WaitCursor;
-
-                backgroundWorker.RunWorkerAsync(args);
+                AnalyzeFile();
             }
         }
 
