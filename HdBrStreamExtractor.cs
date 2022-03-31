@@ -237,6 +237,20 @@ namespace eac3toGUI
 
             if (!string.IsNullOrEmpty(e.Data))
             {
+                if (!e.Data.StartsWith("---"))
+                {
+                    int msgLength = e.Data.IndexOf('"');
+                    msgLength = msgLength == -1 ? e.Data.IndexOf('\b') : msgLength;
+
+                    var error = e.Data.Substring(0, msgLength).Trim();
+
+                    MessageBox.Show(
+                        $"eac3to returned with the following error:\n{error}",
+                        "eac3to Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
                 data = e.Data.Substring(e.Data.LastIndexOf('\b') + 1).Trim();
 
                 if (!string.IsNullOrEmpty(data))
