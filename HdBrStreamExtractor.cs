@@ -237,7 +237,9 @@ namespace eac3toGUI
 
             if (!string.IsNullOrEmpty(e.Data))
             {
-                if (!e.Data.StartsWith("---"))
+                data = e.Data.Substring(e.Data.LastIndexOf('\b') + 1).Trim();
+
+                if (!e.Data.StartsWith("---") && string.IsNullOrEmpty(data))
                 {
                     int msgLength = e.Data.IndexOf('"');
                     msgLength = msgLength == -1 ? e.Data.IndexOf('\b') : msgLength;
@@ -250,8 +252,6 @@ namespace eac3toGUI
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
-
-                data = e.Data.Substring(e.Data.LastIndexOf('\b') + 1).Trim();
 
                 if (!string.IsNullOrEmpty(data))
                     ProcessLine(data);
