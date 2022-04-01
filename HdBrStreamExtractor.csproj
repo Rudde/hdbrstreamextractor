@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Deterministic>false</Deterministic>
+	<PublishSingleFile>true</PublishSingleFile>
+	<Deterministic>false</Deterministic>
     <TargetFramework>net6.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
     <ApplicationIcon>HdBrStreamExtractor.ico</ApplicationIcon>
