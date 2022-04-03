@@ -578,6 +578,7 @@ namespace eac3toGUI
             {
                 Stream s = row.DataBoundItem as Stream;
                 DataGridViewComboBoxCell comboBox = row.Cells["StreamExtractAsComboBox"] as DataGridViewComboBoxCell;
+                comboBox.Value = null;
                 comboBox.Items.Clear();
                 comboBox.Items.AddRange(s.ExtractTypes);
                 if (comboBox.Items.Count == 1)
