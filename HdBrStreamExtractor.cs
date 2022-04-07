@@ -393,7 +393,10 @@ namespace eac3toGUI
                         WriteToLog(ex.StackTrace);
                     }
                 }
-                else ((Feature)FeatureDataGridView.SelectedRows[0].DataBoundItem).Streams.Add(Stream.Parse(data));
+                else
+                {
+                    ((Feature)FeatureDataGridView.SelectedRows[0].DataBoundItem).Streams.Add(Stream.Parse(data));
+                }
 
 
                 return;
@@ -669,7 +672,7 @@ namespace eac3toGUI
             var cultureInfo = cultures.SingleOrDefault(x => x.EnglishName == stream.Language);
             if (cultureInfo == null)
             {
-                cultureInfo = cultures.SingleOrDefault(x => x.EnglishName.Contains(stream.Language));
+                cultureInfo = cultures.FirstOrDefault(x => x.EnglishName.Contains(stream.Language));
             }
             var langIso = cultureInfo?.ThreeLetterISOLanguageName != null ? $".{cultureInfo.ThreeLetterISOLanguageName}" : string.Empty;
 
@@ -756,6 +759,11 @@ namespace eac3toGUI
 
                     sb.Append(" ");
                 }
+            }
+
+            if (!outputLog.Checked)
+            {
+                sb.Append("-log=NUL ");
             }
 
             return sb.ToString();

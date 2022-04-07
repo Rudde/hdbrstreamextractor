@@ -77,6 +77,7 @@
             this.StreamAddOptionsTextBox = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StreamsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.smartFilenames = new System.Windows.Forms.CheckBox();
+            this.outputLog = new System.Windows.Forms.CheckBox();
             this.StatusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -100,12 +101,13 @@
             // 
             this.LogTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.LogTextBox.Location = new System.Drawing.Point(12, 357);
+            this.LogTextBox.Location = new System.Drawing.Point(14, 412);
+            this.LogTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.LogTextBox.Multiline = true;
             this.LogTextBox.Name = "LogTextBox";
             this.LogTextBox.ReadOnly = true;
             this.LogTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.LogTextBox.Size = new System.Drawing.Size(560, 51);
+            this.LogTextBox.Size = new System.Drawing.Size(653, 58);
             this.LogTextBox.TabIndex = 7;
             // 
             // StatusStrip
@@ -114,10 +116,11 @@
             this.ToolStripStatusLabel,
             this.ToolStripProgressBar});
             this.StatusStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            this.StatusStrip.Location = new System.Drawing.Point(0, 440);
+            this.StatusStrip.Location = new System.Drawing.Point(0, 509);
             this.StatusStrip.Name = "StatusStrip";
+            this.StatusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
             this.StatusStrip.ShowItemToolTips = true;
-            this.StatusStrip.Size = new System.Drawing.Size(584, 22);
+            this.StatusStrip.Size = new System.Drawing.Size(681, 24);
             this.StatusStrip.SizingGrip = false;
             this.StatusStrip.TabIndex = 11;
             // 
@@ -134,15 +137,16 @@
             // 
             this.ToolStripProgressBar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.ToolStripProgressBar.Name = "ToolStripProgressBar";
-            this.ToolStripProgressBar.Size = new System.Drawing.Size(200, 16);
+            this.ToolStripProgressBar.Size = new System.Drawing.Size(233, 18);
             this.ToolStripProgressBar.ToolTipText = "Progress";
             // 
             // ExtractButton
             // 
             this.ExtractButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExtractButton.Location = new System.Drawing.Point(416, 414);
+            this.ExtractButton.Location = new System.Drawing.Point(485, 478);
+            this.ExtractButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ExtractButton.Name = "ExtractButton";
-            this.ExtractButton.Size = new System.Drawing.Size(75, 23);
+            this.ExtractButton.Size = new System.Drawing.Size(88, 27);
             this.ExtractButton.TabIndex = 9;
             this.ExtractButton.Text = "Extract";
             this.toolTip1.SetToolTip(this.ExtractButton, "Click to extract selected streams");
@@ -154,9 +158,10 @@
             this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CancelButton.Enabled = false;
-            this.CancelButton.Location = new System.Drawing.Point(497, 414);
+            this.CancelButton.Location = new System.Drawing.Point(580, 478);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.Size = new System.Drawing.Size(88, 27);
             this.CancelButton.TabIndex = 10;
             this.CancelButton.Text = "Cancel";
             this.toolTip1.SetToolTip(this.CancelButton, "Click to cancel");
@@ -167,8 +172,9 @@
             // 
             this.Eac3toLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Eac3toLinkLabel.AutoSize = true;
-            this.Eac3toLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Eac3toLinkLabel.Location = new System.Drawing.Point(51, 417);
+            this.Eac3toLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Eac3toLinkLabel.Location = new System.Drawing.Point(59, 481);
+            this.Eac3toLinkLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Eac3toLinkLabel.Name = "Eac3toLinkLabel";
             this.Eac3toLinkLabel.Size = new System.Drawing.Size(44, 15);
             this.Eac3toLinkLabel.TabIndex = 13;
@@ -192,9 +198,10 @@
             this.FileInputSourceButton.AutoSize = true;
             this.FileInputSourceButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.FileInputSourceButton.BackgroundImage = global::HdBrStreamExtractor.Properties.Resources.copy_24;
-            this.FileInputSourceButton.Location = new System.Drawing.Point(219, 14);
+            this.FileInputSourceButton.Location = new System.Drawing.Point(259, 16);
+            this.FileInputSourceButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.FileInputSourceButton.Name = "FileInputSourceButton";
-            this.FileInputSourceButton.Size = new System.Drawing.Size(26, 23);
+            this.FileInputSourceButton.Size = new System.Drawing.Size(26, 25);
             this.FileInputSourceButton.TabIndex = 13;
             this.FileInputSourceButton.Text = "   ";
             this.toolTip1.SetToolTip(this.FileInputSourceButton, "Select Input File(s)");
@@ -207,9 +214,10 @@
             this.FolderInputSourceButton.AutoSize = true;
             this.FolderInputSourceButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.FolderInputSourceButton.BackgroundImage = global::HdBrStreamExtractor.Properties.Resources.folder_24;
-            this.FolderInputSourceButton.Location = new System.Drawing.Point(251, 14);
+            this.FolderInputSourceButton.Location = new System.Drawing.Point(297, 16);
+            this.FolderInputSourceButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.FolderInputSourceButton.Name = "FolderInputSourceButton";
-            this.FolderInputSourceButton.Size = new System.Drawing.Size(26, 23);
+            this.FolderInputSourceButton.Size = new System.Drawing.Size(26, 25);
             this.FolderInputSourceButton.TabIndex = 12;
             this.FolderInputSourceButton.Text = "   ";
             this.toolTip1.SetToolTip(this.FolderInputSourceButton, "Select Input Folder");
@@ -222,9 +230,10 @@
             this.FolderOutputSourceButton.AutoSize = true;
             this.FolderOutputSourceButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.FolderOutputSourceButton.BackgroundImage = global::HdBrStreamExtractor.Properties.Resources.folder_24;
-            this.FolderOutputSourceButton.Location = new System.Drawing.Point(250, 14);
+            this.FolderOutputSourceButton.Location = new System.Drawing.Point(296, 16);
+            this.FolderOutputSourceButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.FolderOutputSourceButton.Name = "FolderOutputSourceButton";
-            this.FolderOutputSourceButton.Size = new System.Drawing.Size(26, 23);
+            this.FolderOutputSourceButton.Size = new System.Drawing.Size(26, 25);
             this.FolderOutputSourceButton.TabIndex = 13;
             this.FolderOutputSourceButton.Text = "   ";
             this.toolTip1.SetToolTip(this.FolderOutputSourceButton, "Select Output Folder");
@@ -234,8 +243,9 @@
             // FeatureLinkLabel
             // 
             this.FeatureLinkLabel.AutoSize = true;
-            this.FeatureLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FeatureLinkLabel.Location = new System.Drawing.Point(6, -2);
+            this.FeatureLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.FeatureLinkLabel.Location = new System.Drawing.Point(7, -2);
+            this.FeatureLinkLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.FeatureLinkLabel.Name = "FeatureLinkLabel";
             this.FeatureLinkLabel.Size = new System.Drawing.Size(63, 15);
             this.FeatureLinkLabel.TabIndex = 16;
@@ -248,8 +258,9 @@
             // 
             this.HelpLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.HelpLinkLabel.AutoSize = true;
-            this.HelpLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HelpLinkLabel.Location = new System.Drawing.Point(12, 417);
+            this.HelpLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HelpLinkLabel.Location = new System.Drawing.Point(14, 481);
+            this.HelpLinkLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.HelpLinkLabel.Name = "HelpLinkLabel";
             this.HelpLinkLabel.Size = new System.Drawing.Size(33, 15);
             this.HelpLinkLabel.TabIndex = 13;
@@ -293,7 +304,7 @@
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(9, 9);
+            this.splitContainer1.Location = new System.Drawing.Point(10, 10);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -304,8 +315,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.OutputGroupBox);
-            this.splitContainer1.Size = new System.Drawing.Size(566, 49);
-            this.splitContainer1.SplitterDistance = 283;
+            this.splitContainer1.Size = new System.Drawing.Size(660, 57);
+            this.splitContainer1.SplitterDistance = 330;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 16;
             // 
@@ -316,8 +327,10 @@
             this.InputGroupBox.Controls.Add(this.InputSourceTextBox);
             this.InputGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InputGroupBox.Location = new System.Drawing.Point(0, 0);
+            this.InputGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.InputGroupBox.Name = "InputGroupBox";
-            this.InputGroupBox.Size = new System.Drawing.Size(283, 49);
+            this.InputGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.InputGroupBox.Size = new System.Drawing.Size(330, 57);
             this.InputGroupBox.TabIndex = 18;
             this.InputGroupBox.TabStop = false;
             this.InputGroupBox.Text = "Input";
@@ -326,9 +339,10 @@
             // 
             this.InputSourceTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.InputSourceTextBox.Location = new System.Drawing.Point(6, 16);
+            this.InputSourceTextBox.Location = new System.Drawing.Point(7, 18);
+            this.InputSourceTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.InputSourceTextBox.Name = "InputSourceTextBox";
-            this.InputSourceTextBox.Size = new System.Drawing.Size(207, 20);
+            this.InputSourceTextBox.Size = new System.Drawing.Size(241, 23);
             this.InputSourceTextBox.TabIndex = 0;
             // 
             // OutputGroupBox
@@ -337,8 +351,10 @@
             this.OutputGroupBox.Controls.Add(this.FolderOutputTextBox);
             this.OutputGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OutputGroupBox.Location = new System.Drawing.Point(0, 0);
+            this.OutputGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.OutputGroupBox.Name = "OutputGroupBox";
-            this.OutputGroupBox.Size = new System.Drawing.Size(282, 49);
+            this.OutputGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.OutputGroupBox.Size = new System.Drawing.Size(329, 57);
             this.OutputGroupBox.TabIndex = 19;
             this.OutputGroupBox.TabStop = false;
             this.OutputGroupBox.Text = "Output";
@@ -347,9 +363,10 @@
             // 
             this.FolderOutputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.FolderOutputTextBox.Location = new System.Drawing.Point(6, 16);
+            this.FolderOutputTextBox.Location = new System.Drawing.Point(7, 18);
+            this.FolderOutputTextBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.FolderOutputTextBox.Name = "FolderOutputTextBox";
-            this.FolderOutputTextBox.Size = new System.Drawing.Size(238, 20);
+            this.FolderOutputTextBox.Size = new System.Drawing.Size(277, 23);
             this.FolderOutputTextBox.TabIndex = 1;
             // 
             // splitContainer2
@@ -357,7 +374,7 @@
             this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer2.Location = new System.Drawing.Point(9, 58);
+            this.splitContainer2.Location = new System.Drawing.Point(10, 67);
             this.splitContainer2.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -369,8 +386,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.StreamGroupBox);
-            this.splitContainer2.Size = new System.Drawing.Size(566, 296);
-            this.splitContainer2.SplitterDistance = 110;
+            this.splitContainer2.Size = new System.Drawing.Size(660, 342);
+            this.splitContainer2.SplitterDistance = 127;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 17;
             // 
@@ -380,8 +397,10 @@
             this.FeatureGroupBox.Controls.Add(this.FeatureDataGridView);
             this.FeatureGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FeatureGroupBox.Location = new System.Drawing.Point(0, 0);
+            this.FeatureGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.FeatureGroupBox.Name = "FeatureGroupBox";
-            this.FeatureGroupBox.Size = new System.Drawing.Size(566, 110);
+            this.FeatureGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.FeatureGroupBox.Size = new System.Drawing.Size(660, 127);
             this.FeatureGroupBox.TabIndex = 15;
             this.FeatureGroupBox.TabStop = false;
             // 
@@ -406,12 +425,13 @@
             this.FeatureDurationDataGridViewTextBoxColumn});
             this.FeatureDataGridView.DataSource = this.FeatureBindingSource;
             this.FeatureDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.FeatureDataGridView.Location = new System.Drawing.Point(6, 16);
+            this.FeatureDataGridView.Location = new System.Drawing.Point(7, 18);
+            this.FeatureDataGridView.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.FeatureDataGridView.MultiSelect = false;
             this.FeatureDataGridView.Name = "FeatureDataGridView";
             this.FeatureDataGridView.RowHeadersVisible = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -419,7 +439,7 @@
             this.FeatureDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.FeatureDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.FeatureDataGridView.ShowEditingIcon = false;
-            this.FeatureDataGridView.Size = new System.Drawing.Size(554, 88);
+            this.FeatureDataGridView.Size = new System.Drawing.Size(646, 102);
             this.FeatureDataGridView.TabIndex = 13;
             this.FeatureDataGridView.Tag = "0";
             this.FeatureDataGridView.DataSourceChanged += new System.EventHandler(this.FeatureDataGridView_DataSourceChanged);
@@ -493,8 +513,10 @@
             this.StreamGroupBox.Controls.Add(this.StreamDataGridView);
             this.StreamGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.StreamGroupBox.Location = new System.Drawing.Point(0, 0);
+            this.StreamGroupBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.StreamGroupBox.Name = "StreamGroupBox";
-            this.StreamGroupBox.Size = new System.Drawing.Size(566, 185);
+            this.StreamGroupBox.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.StreamGroupBox.Size = new System.Drawing.Size(660, 214);
             this.StreamGroupBox.TabIndex = 16;
             this.StreamGroupBox.TabStop = false;
             this.StreamGroupBox.Text = "Stream(s)";
@@ -521,12 +543,13 @@
             this.StreamExtractAsComboBox,
             this.StreamAddOptionsTextBox});
             this.StreamDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.StreamDataGridView.Location = new System.Drawing.Point(6, 18);
+            this.StreamDataGridView.Location = new System.Drawing.Point(7, 21);
+            this.StreamDataGridView.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.StreamDataGridView.MultiSelect = false;
             this.StreamDataGridView.Name = "StreamDataGridView";
             this.StreamDataGridView.RowHeadersVisible = false;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -534,7 +557,7 @@
             this.StreamDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.StreamDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.StreamDataGridView.ShowEditingIcon = false;
-            this.StreamDataGridView.Size = new System.Drawing.Size(554, 160);
+            this.StreamDataGridView.Size = new System.Drawing.Size(646, 186);
             this.StreamDataGridView.TabIndex = 7;
             this.StreamDataGridView.DataSourceChanged += new System.EventHandler(this.StreamDataGridView_DataSourceChanged);
             // 
@@ -618,19 +641,34 @@
             this.smartFilenames.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.smartFilenames.Checked = true;
             this.smartFilenames.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.smartFilenames.Location = new System.Drawing.Point(255, 417);
+            this.smartFilenames.Location = new System.Drawing.Point(298, 482);
+            this.smartFilenames.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.smartFilenames.Name = "smartFilenames";
-            this.smartFilenames.Size = new System.Drawing.Size(155, 17);
+            this.smartFilenames.Size = new System.Drawing.Size(181, 20);
             this.smartFilenames.TabIndex = 18;
             this.smartFilenames.Text = "Output with smart filenames";
             this.smartFilenames.UseVisualStyleBackColor = true;
             // 
+            // outputLog
+            // 
+            this.outputLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.outputLog.AutoSize = true;
+            this.outputLog.Checked = true;
+            this.outputLog.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.outputLog.Location = new System.Drawing.Point(207, 483);
+            this.outputLog.Name = "outputLog";
+            this.outputLog.Size = new System.Drawing.Size(84, 19);
+            this.outputLog.TabIndex = 19;
+            this.outputLog.Text = "Output log";
+            this.outputLog.UseVisualStyleBackColor = true;
+            // 
             // HdBrStreamExtractor
             // 
             this.AcceptButton = this.ExtractButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 462);
+            this.ClientSize = new System.Drawing.Size(681, 533);
+            this.Controls.Add(this.outputLog);
             this.Controls.Add(this.smartFilenames);
             this.Controls.Add(this.splitContainer2);
             this.Controls.Add(this.splitContainer1);
@@ -641,7 +679,8 @@
             this.Controls.Add(this.StatusStrip);
             this.Controls.Add(this.LogTextBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(600, 500);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MinimumSize = new System.Drawing.Size(697, 571);
             this.Name = "HdBrStreamExtractor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HD-DVD/Blu-ray Stream Extractor ";
@@ -719,5 +758,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn StreamExtractAsComboBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn StreamAddOptionsTextBox;
         private System.Windows.Forms.CheckBox smartFilenames;
+        private System.Windows.Forms.CheckBox outputLog;
     }
 }
