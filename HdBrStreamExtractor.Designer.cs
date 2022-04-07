@@ -648,6 +648,7 @@
             this.smartFilenames.TabIndex = 18;
             this.smartFilenames.Text = "Output with smart filenames";
             this.smartFilenames.UseVisualStyleBackColor = true;
+            this.smartFilenames.CheckedChanged += new System.EventHandler(this.CheckedChanged_setting);
             // 
             // outputLog
             // 
@@ -661,6 +662,7 @@
             this.outputLog.TabIndex = 19;
             this.outputLog.Text = "Output log";
             this.outputLog.UseVisualStyleBackColor = true;
+            this.outputLog.CheckedChanged += new System.EventHandler(this.CheckedChanged_setting);
             // 
             // HdBrStreamExtractor
             // 

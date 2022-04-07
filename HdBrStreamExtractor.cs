@@ -30,6 +30,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 using eac3to;
+using Microsoft.Win32;
 
 namespace eac3toGUI
 {
@@ -48,6 +49,38 @@ namespace eac3toGUI
             /*TODO: Use undocumented argument '-neroaacenc="[path to neroaacenc.exe]"'
              * Need to check if file exists prior, if not, state an update is reqiuired.
             */
+
+            RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE");
+            var app = reg.OpenSubKey("HdBrStreamExtractor");
+            if (app != null)
+            {
+                var keys = app.GetValueNames();
+                foreach (var key in keys)
+                {
+                    object value;
+                    bool boolValue;
+
+                    switch (key)
+                    {
+                        case "EAC3TO_OUTPUT_LOG":
+                            value = app.GetValue(key);
+                            if (bool.TryParse(value.ToString(), out boolValue))
+                            {
+                                outputLog.Checked = boolValue;
+                            }
+                            break;
+                        case "SMARTFILENAME_OUTPUT":
+                            value = app.GetValue(key);
+                            if (bool.TryParse(value.ToString(), out boolValue))
+                            {
+                                smartFilenames.Checked = boolValue;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
         }
 
         struct eac3toArgs
@@ -1002,6 +1035,42 @@ namespace eac3toGUI
             Version ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             this.Text += string.Format("v{0}.{1}.{2}", ver.Major, ver.Minor, ver.Build);
             StreamDataGridView.DataSource = StreamsBindingSource;
+        }
+
+        private void CheckedChanged_setting(object sender, EventArgs e)
+        {
+            if (sender is CheckBox checkbox)
+            {
+                string key = string.Empty;
+
+                if (checkbox == outputLog)
+                {
+                    key = "EAC3TO_OUTPUT_LOG";
+                }
+                else if (checkbox == smartFilenames)
+                {
+                    key = "SMARTFILENAME_OUTPUT";
+                }
+
+                if (key == string.Empty)
+                {
+                    throw new Exception("Invalid use of CheckedChanged event handler");
+                }
+
+                RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE", true);
+
+                var app = reg.OpenSubKey("HdBrStreamExtractor", true);
+                if (app == null)
+                {
+                    app = reg.CreateSubKey("HdBrStreamExtractor", true);
+                }
+
+                app.SetValue(key, checkbox.Checked);
+            }
+            else
+            {
+                throw new Exception("Invalid use of CheckedChanged event handler");
+            }
         }
     }
 }
